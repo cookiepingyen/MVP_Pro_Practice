@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace MVP_Pro_Practice
 {
-    internal class StepModel
+    public class StepModel
     {
         public string title { get; set; }
         public string description { get; set; }
-
-
 
     }
 }
