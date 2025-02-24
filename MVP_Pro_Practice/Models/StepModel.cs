@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVP_Pro_Practice.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace MVP_Pro_Practice
     {
         public string title { get; set; }
         public string description { get; set; }
+        public StatusEnum status { get; set; }
 
     }
 }

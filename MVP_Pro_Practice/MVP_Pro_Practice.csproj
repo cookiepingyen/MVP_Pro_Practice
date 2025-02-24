@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\StepsViewBase.cs">
+    <Compile Include="Components\StepsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Contracts\IStep.cs" />
@@ -59,18 +59,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enum\StatusEnum.cs" />
     <Compile Include="Presenter\StepsPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Components\BaseStepsView.cs">
+    <Compile Include="Components\AStepsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\BaseStepsView.Designer.cs">
-      <DependentUpon>BaseStepsView.cs</DependentUpon>
+    <Compile Include="Components\AStepsView.Designer.cs">
+      <DependentUpon>AStepsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="StepModel.cs" />
-    <EmbeddedResource Include="Components\BaseStepsView.resx">
-      <DependentUpon>BaseStepsView.cs</DependentUpon>
+    <Compile Include="Models\StepModel.cs" />
+    <EmbeddedResource Include="Components\AStepsView.resx">
+      <DependentUpon>AStepsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

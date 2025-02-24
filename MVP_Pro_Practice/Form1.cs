@@ -21,6 +21,7 @@ namespace MVP_Pro_Practice
         public Form1()
         {
             InitializeComponent();
+            this.stepComponent1.Direction = "Vertical";
             this.stepsPresenter = new StepsPresenter(stepComponent1);
             InitSteps();
             stepComponent1.StepIndexChange += StepComponent1_StepIndexChange;
@@ -39,6 +40,13 @@ namespace MVP_Pro_Practice
         private void InitSteps()
         {
             stepsPresenter.GetStepList();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            stepComponent1.AssignStepStatus(2);
+            stepComponent1.AssignStepStatus(3);
+            stepComponent1.AssignStepStatus(4);
         }
     }
 }

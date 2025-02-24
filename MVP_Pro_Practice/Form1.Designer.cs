@@ -30,21 +30,34 @@ namespace MVP_Pro_Practice
         /// </summary>
         private void InitializeComponent()
         {
-            this.stepComponent1 = new MVP_Pro_Practice.Components.StepsViewBase();
+            this.stepComponent1 = new MVP_Pro_Practice.Components.StepsView();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // stepComponent1
             // 
+            this.stepComponent1.Direction = "Horizontal";
             this.stepComponent1.Location = new System.Drawing.Point(5, 12);
             this.stepComponent1.Name = "stepComponent1";
-            this.stepComponent1.Size = new System.Drawing.Size(1054, 408);
+            this.stepComponent1.Size = new System.Drawing.Size(827, 315);
             this.stepComponent1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(392, 399);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 485);
+            this.ClientSize = new System.Drawing.Size(1153, 630);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.stepComponent1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -55,7 +68,8 @@ namespace MVP_Pro_Practice
 
         #endregion
 
-        private StepsViewBase stepComponent1;
+        private StepsView stepComponent1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
