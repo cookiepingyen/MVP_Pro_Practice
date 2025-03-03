@@ -1,5 +1,6 @@
 ﻿using MVP_Pro_Practice.Contracts;
 using MVP_Pro_Practice.Presenter;
+using MVP_Pro_Practice.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,15 @@ namespace MVP_Pro_Practice
     {
         List<StepModel> steps = new List<StepModel>();
         public int currentStep = 1;
-        IStepsPresenter stepsPresenter;
+        IStepService stepService;
 
-        public Form1()
+        //IStepsPresenter stepsPresenter;
+
+        public Form1(IStepService service)
         {
             InitializeComponent();
-            this.stepComponent1.Direction = "Vertical";
-            this.stepsPresenter = new StepsPresenter(stepComponent1);
+            this.stepService = service;
+            //this.stepsPresenter = new StepsPresenter(stepComponent1);
             InitSteps();
             stepComponent1.StepIndexChange += StepComponent1_StepIndexChange;
         }
@@ -34,12 +37,12 @@ namespace MVP_Pro_Practice
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            stepComponent1.StepListResponse(stepService.GetStepList());
         }
 
         private void InitSteps()
         {
-            stepsPresenter.GetStepList();
+            //stepService.GetStepList();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace MVP_Pro_Practice.Models.Enum
 {
+
+    public enum StepClickDirection
+    {
+        Next,
+        Previous
+    }
     public enum StatusEnum
     {
         Wait,

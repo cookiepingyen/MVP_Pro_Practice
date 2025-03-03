@@ -1,4 +1,6 @@
-﻿namespace MVP_Pro_Practice
+﻿using MVP_Pro_Practice.Models.Enum;
+
+namespace MVP_Pro_Practice
 {
     partial class AStepsView
     {
@@ -49,7 +51,8 @@
             this.nextBtn.TabIndex = 7;
             this.nextBtn.Text = "Next";
             this.nextBtn.UseVisualStyleBackColor = true;
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            this.nextBtn.Tag = StepClickDirection.Next;
+            this.nextBtn.Click += new System.EventHandler(this.ButtonDirection_Click);
             // 
             // prevBtn
             // 
@@ -59,7 +62,8 @@
             this.prevBtn.TabIndex = 6;
             this.prevBtn.Text = "Prev";
             this.prevBtn.UseVisualStyleBackColor = true;
-            this.prevBtn.Click += new System.EventHandler(this.prevBtn_Click);
+            this.prevBtn.Tag = StepClickDirection.Previous;
+            this.prevBtn.Click += new System.EventHandler(this.ButtonDirection_Click);
             // 
             // finishBtn
             // 
@@ -69,7 +73,7 @@
             this.finishBtn.TabIndex = 9;
             this.finishBtn.Text = "Finish";
             this.finishBtn.UseVisualStyleBackColor = true;
-            this.finishBtn.Click += new System.EventHandler(this.finishBtn_Click);
+            this.finishBtn.Click += new System.EventHandler(this.FinishBtn_Click);
             // 
             // AStepsView
             // 
