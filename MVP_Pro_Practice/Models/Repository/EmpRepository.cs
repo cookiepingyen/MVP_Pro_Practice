@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVP_Pro_Practice.Models.Repository
 {
-    [Singleton]
+    [Singleton("IEmpRepository")]
     internal class EmpRepository : IEmpRepository
     {
         public Emp GetEmpByID(int ID)

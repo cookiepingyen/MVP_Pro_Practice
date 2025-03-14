@@ -1,4 +1,9 @@
-﻿using System;
+﻿using IOCServiceCollection;
+using IOCServiceCollection.Attributes;
+using Microsoft.Extensions.DependencyInjection;
+using MVP_Pro_Practice.Contracts;
+using MVP_Pro_Practice.Presenter;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,10 +13,15 @@ using System.Windows.Forms;
 
 namespace MVP_Pro_Practice.Components
 {
+    [Singleton]
     internal class StepsView : AStepsView
     {
-        //protected override Size StepSize => new Size(50, 15);
+        public StepsView(PresenterFactory presenterFactory) : base(presenterFactory)
+        {
 
+        }
+
+        //protected override Size StepSize => new Size(50, 15);
         protected override Font FontSytle => new Font("微軟正黑體", 10f);
 
         protected override FlowLayoutPanel RenderStep(StepModel step)

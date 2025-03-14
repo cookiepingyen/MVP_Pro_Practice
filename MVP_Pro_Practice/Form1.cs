@@ -1,4 +1,5 @@
-﻿using MVP_Pro_Practice.Contracts;
+﻿using MVP_Pro_Practice.Components;
+using MVP_Pro_Practice.Contracts;
 using MVP_Pro_Practice.Presenter;
 using MVP_Pro_Practice.Services;
 using System;
@@ -18,16 +19,16 @@ namespace MVP_Pro_Practice
         List<StepModel> steps = new List<StepModel>();
         public int currentStep = 1;
         IStepService stepService;
+        AStepsView stepView;
 
-        //IStepsPresenter stepsPresenter;
-
-        public Form1(IStepService service)
+        public Form1(IStepService service, AStepsView stepView)
         {
             InitializeComponent();
             this.stepService = service;
-            //this.stepsPresenter = new StepsPresenter(stepComponent1);
             InitSteps();
-            stepComponent1.StepIndexChange += StepComponent1_StepIndexChange;
+            this.stepView = stepView;
+            flowLayoutPanel1.Controls.Add(stepView);
+            this.stepView.StepIndexChange += StepComponent1_StepIndexChange;
         }
 
         private void StepComponent1_StepIndexChange(object sender, int e)
@@ -37,19 +38,20 @@ namespace MVP_Pro_Practice
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            stepComponent1.StepListResponse(stepService.GetStepList());
+            stepView.StepListResponse(stepService.GetStepList());
         }
 
         private void InitSteps()
         {
-            //stepService.GetStepList();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            stepComponent1.AssignStepStatus(2);
-            stepComponent1.AssignStepStatus(3);
-            stepComponent1.AssignStepStatus(4);
+            stepView.AssignStepStatus(2);
+            stepView.AssignStepStatus(3);
+            stepView.AssignStepStatus(4);
         }
     }
 }

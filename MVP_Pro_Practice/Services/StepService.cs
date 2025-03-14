@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVP_Pro_Practice.Services
 {
-    [Singleton]
+    [Singleton("IStepService")]
     internal class StepService : IStepService
     {
         private readonly IStepRepository _stepRepository;

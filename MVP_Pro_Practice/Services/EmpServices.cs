@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MVP_Pro_Practice.Services
 {
-    [Singleton]
+    [Singleton("IEmpService")]
     internal class EmpServices : IEmpService
     {
         private readonly IEmpRepository _empRepository;

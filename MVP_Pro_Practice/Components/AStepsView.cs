@@ -1,4 +1,5 @@
-﻿using MVP_Pro_Practice.Contracts;
+﻿using IOCServiceCollection;
+using MVP_Pro_Practice.Contracts;
 using MVP_Pro_Practice.Models.Enum;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,11 @@ using System.Windows.Forms;
 
 namespace MVP_Pro_Practice
 {
+    // AStepsView stepview = new StepsView
     public abstract partial class AStepsView : UserControl, IStepView
     {
+        protected IStepsPresenter _stepsPresenter;
+
         public List<StepModel> _steps;
 
         public int currentStep = 1;
@@ -22,9 +26,10 @@ namespace MVP_Pro_Practice
         protected Button NextButton { get; set; }
         protected Button PreviousButton { get; set; }
 
-        public AStepsView()
+        public AStepsView(PresenterFactory presenterFactory)
         {
             InitializeComponent();
+            _stepsPresenter = presenterFactory.Create<IStepsPresenter, IStepView>(this);
         }
 
         protected abstract FlowLayoutPanel RenderStep(StepModel step);
@@ -32,6 +37,7 @@ namespace MVP_Pro_Practice
         public void StepListResponse(List<StepModel> steps)
         {
             _steps = steps;
+            _stepsPresenter.steps = steps;
             InitStepModels();
             ChangeStepStatus(currentStep);
             ChangeLabelColor();

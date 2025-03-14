@@ -11,8 +11,9 @@ namespace MVP_Pro_Practice.Contracts
         void StepListResponse(List<StepModel> steps);
     }
 
-    interface IStepsPresenter
+    public interface IStepsPresenter
     {
+        List<StepModel> steps { get; set; }
         void GetStepList();
     }
 }

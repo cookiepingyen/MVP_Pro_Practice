@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MVP_Pro_Practice.Components;
+using MVP_Pro_Practice.Contracts;
 using MVP_Pro_Practice.Models.Repository;
 using MVP_Pro_Practice.Services;
 using System;
@@ -30,6 +32,7 @@ namespace MVP_Pro_Practice
 
             //collection.AddTransient<IEmpRepository, EmpRepository>();
             //collection.AddSingleton<IEmpService, EmpServices>();
+            //collection.AddSingleton<AStepsView, StepsView>();
             collection.AddSingleton<Form, Form1>();
 
             provider = collection.BuildServiceProvider();

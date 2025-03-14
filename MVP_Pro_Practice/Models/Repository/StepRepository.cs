@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVP_Pro_Practice.Models.Repository
 {
-    [Singleton]
+    [Singleton("IStepRepository")]
     internal class StepRepository : IStepRepository
     {
         public List<StepModel> GetStepList()

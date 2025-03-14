@@ -6,14 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IOCServiceCollection;
 
 namespace MVP_Pro_Practice.Components
 {
+    //BeautifulStepsView bs = new BeautifulStepsView();
     internal class BeautifulStepsView : AStepsView
     {
         protected override Font FontSytle => new Font("微軟正黑體", 10f);
 
-        public BeautifulStepsView()
+        public BeautifulStepsView(PresenterFactory presenterFactory) : base(presenterFactory)
         {
             Direction = "Vertical";
         }
