@@ -14,6 +14,13 @@ namespace MVP_Pro_Practice.Contracts
     public interface IStepsPresenter
     {
         List<StepModel> steps { get; set; }
+        int currentStep { get; set; }
+
         void GetStepList();
+
+        void ChangeStepStatus(int currentStep);
+
+        bool CanMove(int stepNum);
+        void FinishAllSteps();
     }
 }

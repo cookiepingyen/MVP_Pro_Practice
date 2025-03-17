@@ -46,12 +46,5 @@ namespace MVP_Pro_Practice
 
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            stepView.AssignStepStatus(2);
-            stepView.AssignStepStatus(3);
-            stepView.AssignStepStatus(4);
-        }
     }
 }

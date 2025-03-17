@@ -27,18 +27,20 @@ namespace MVP_Pro_Practice
 
         public void InitStepModels()
         {
+            List<StepModel> steps = _stepsPresenter.steps;
+
             if (Direction == "Horizontal")
             {
-                flowLayoutPanel1.Width = _steps.Count * 150;
+                flowLayoutPanel1.Width = steps.Count * 150;
                 this.Width = flowLayoutPanel1.Width;
             }
             else
             {
                 flowLayoutPanel1.Width = 120;
-                flowLayoutPanel1.Height = _steps.Count * 150;
+                flowLayoutPanel1.Height = steps.Count * 150;
                 this.Height = flowLayoutPanel1.Height;
             }
-            foreach (StepModel step in _steps)
+            foreach (StepModel step in steps)
             {
                 FlowLayoutPanel step1FlowOutPanel = RenderStep(step);
 
@@ -62,13 +64,14 @@ namespace MVP_Pro_Practice
             }
 
             flowLayoutPanel1.Controls.RemoveAt(flowLayoutPanel1.Controls.Count - 1);
+
         }
 
-        public void ChangeLabelColor()
+        public void ChangeLabelColor(List<StepModel> steps)
         {
-            for (int i = 0; i < _steps.Count; i++)
+            for (int i = 0; i < steps.Count; i++)
             {
-                Color textColor = GetColorByStatus(_steps[i]);
+                Color textColor = GetColorByStatus(steps[i]);
                 FlowLayoutPanel panel = flowLayoutPanel1.Controls.OfType<FlowLayoutPanel>().ToList()[i];
                 panel.Controls.OfType<Label>().ToList().ForEach(x => x.ForeColor = textColor);
             }

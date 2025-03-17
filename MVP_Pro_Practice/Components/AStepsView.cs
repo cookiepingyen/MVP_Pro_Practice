@@ -1,6 +1,7 @@
 ﻿using IOCServiceCollection;
 using MVP_Pro_Practice.Contracts;
 using MVP_Pro_Practice.Models.Enum;
+using MVP_Pro_Practice.Presenter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,6 @@ namespace MVP_Pro_Practice
     {
         protected IStepsPresenter _stepsPresenter;
 
-        public List<StepModel> _steps;
-
-        public int currentStep = 1;
         public event EventHandler<int> StepIndexChange;
 
         protected Button NextButton { get; set; }
@@ -36,74 +34,31 @@ namespace MVP_Pro_Practice
 
         public void StepListResponse(List<StepModel> steps)
         {
-            _steps = steps;
             _stepsPresenter.steps = steps;
             InitStepModels();
-            ChangeStepStatus(currentStep);
-            ChangeLabelColor();
+            _stepsPresenter.ChangeStepStatus(_stepsPresenter.currentStep);
+            ChangeLabelColor(_stepsPresenter.steps);
         }
 
         private void ButtonDirection_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             StepClickDirection direction = (StepClickDirection)button.Tag;
-            int stepNum = direction == StepClickDirection.Next ? currentStep + 1 : currentStep - 1;
-            if (CanMove(stepNum))
+            int stepNum = direction == StepClickDirection.Next ? _stepsPresenter.currentStep + 1 : _stepsPresenter.currentStep - 1;
+            if (_stepsPresenter.CanMove(stepNum))
             {
-                ChangeStepStatus(currentStep);
-                ChangeLabelColor();
+                _stepsPresenter.ChangeStepStatus(_stepsPresenter.currentStep);
+                ChangeLabelColor(_stepsPresenter.steps);
             }
 
-            StepIndexChange.Invoke(this, currentStep);
+            StepIndexChange.Invoke(this, _stepsPresenter.currentStep);
         }
-
 
         private void FinishBtn_Click(object sender, EventArgs e)
         {
-            currentStep = _steps.Count;
-            foreach (StepModel step in _steps)
-            {
-                step.status = StatusEnum.Finish;
-            }
-            ChangeLabelColor();
+            _stepsPresenter.FinishAllSteps();
+            ChangeLabelColor(_stepsPresenter.steps);
         }
 
-        public void ChangeStepStatus(int currentStep)
-        {
-            for (int i = 0; i < _steps.Count; i++)
-            {
-                if (i < currentStep - 1)
-                {
-                    _steps[i].status = StatusEnum.Finish;
-                }
-                else if (i == currentStep - 1)
-                {
-                    _steps[i].status = StatusEnum.Process;
-                }
-                else
-                {
-                    _steps[i].status = StatusEnum.Wait;
-                }
-            }
-        }
-
-        public bool CanMove(int stepNum)
-        {
-            if (stepNum >= 1 && stepNum <= _steps.Count)
-            {
-                currentStep = stepNum;
-                return true;
-            }
-            return false;
-        }
-
-        public void AssignStepStatus(int stepNum, StatusEnum status = StatusEnum.Finish)
-        {
-            if (stepNum >= 1 && stepNum <= _steps.Count)
-            {
-                _steps[stepNum - 1].status = status;
-                ChangeLabelColor();
-            }
-        }
     }
 }
