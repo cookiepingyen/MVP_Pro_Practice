@@ -59,7 +59,15 @@ namespace MVP_Pro_Practice.Presenter
             }
         }
 
-        public bool CanMove(int stepNum)
+        public void Move(int stepNum)
+        {
+            if (CanMove(stepNum))
+            {
+                ChangeStepStatus(_currentStep);
+            }
+        }
+
+        private bool CanMove(int stepNum)
         {
             if (stepNum >= 1 && stepNum <= _steps.Count)
             {

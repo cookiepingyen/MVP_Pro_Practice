@@ -42,16 +42,13 @@ namespace MVP_Pro_Practice
 
         private void ButtonDirection_Click(object sender, EventArgs e)
         {
+            int currentStepNum = _stepsPresenter.currentStep;
             Button button = (Button)sender;
             StepClickDirection direction = (StepClickDirection)button.Tag;
-            int stepNum = direction == StepClickDirection.Next ? _stepsPresenter.currentStep + 1 : _stepsPresenter.currentStep - 1;
-            if (_stepsPresenter.CanMove(stepNum))
-            {
-                _stepsPresenter.ChangeStepStatus(_stepsPresenter.currentStep);
-                ChangeLabelColor(_stepsPresenter.steps);
-            }
-
-            StepIndexChange.Invoke(this, _stepsPresenter.currentStep);
+            int stepNum = direction == StepClickDirection.Next ? currentStepNum + 1 : currentStepNum - 1;
+            _stepsPresenter.Move(stepNum);
+            ChangeLabelColor(_stepsPresenter.steps);
+            StepIndexChange.Invoke(this, currentStepNum);
         }
 
         private void FinishBtn_Click(object sender, EventArgs e)

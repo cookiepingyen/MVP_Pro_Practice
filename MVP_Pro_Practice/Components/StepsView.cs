@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace MVP_Pro_Practice.Components
 {
-    [Singleton]
+    [Transient]
     internal class StepsView : AStepsView
     {
         public StepsView(PresenterFactory presenterFactory) : base(presenterFactory)

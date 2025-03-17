@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IOCServiceCollection;
+using IOCServiceCollection.Attributes;
 
 namespace MVP_Pro_Practice.Components
 {
     //BeautifulStepsView bs = new BeautifulStepsView();
+    [Transient]
     internal class BeautifulStepsView : AStepsView
     {
         protected override Font FontSytle => new Font("微軟正黑體", 10f);

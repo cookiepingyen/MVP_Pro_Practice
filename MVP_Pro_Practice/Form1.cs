@@ -21,12 +21,12 @@ namespace MVP_Pro_Practice
         IStepService stepService;
         AStepsView stepView;
 
-        public Form1(IStepService service, AStepsView stepView)
+        public Form1(IStepService service, IEnumerable<AStepsView> stepViews)
         {
             InitializeComponent();
             this.stepService = service;
             InitSteps();
-            this.stepView = stepView;
+            this.stepView = stepViews.OfType<StepsView>().First();
             flowLayoutPanel1.Controls.Add(stepView);
             this.stepView.StepIndexChange += StepComponent1_StepIndexChange;
         }

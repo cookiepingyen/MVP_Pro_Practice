@@ -20,7 +20,7 @@ namespace MVP_Pro_Practice.Contracts
 
         void ChangeStepStatus(int currentStep);
 
-        bool CanMove(int stepNum);
         void FinishAllSteps();
+        void Move(int stepNum);
     }
 }
