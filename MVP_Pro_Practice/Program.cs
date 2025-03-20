@@ -30,10 +30,8 @@ namespace MVP_Pro_Practice
             IOCServiceCollection.ServiceCollection collection = new IOCServiceCollection.ServiceCollection();
             collection.AutoRegister(assembly);
 
-            //collection.AddTransient<IEmpRepository, EmpRepository>();
-            //collection.AddSingleton<IEmpService, EmpServices>();
-            //collection.AddSingleton<AStepsView, StepsView>();
-            collection.AddSingleton<Form, Form1>();
+            //collection.AddSingleton<Form, Form1>();
+            collection.AddSingleton<Form, Form2>();
 
             provider = collection.BuildServiceProvider();
             Form form = provider.GetService<Form>();
