@@ -40,7 +40,7 @@ namespace MVP_Pro_Practice.Components.Pagy
             set
             {
                 _paginationPresenter.TotalPageNum = value;
-                GeneratePages(_paginationPresenter.GeneratePageNumbers(PageType.Init));
+                _paginationPresenter.GeneratePageNumbers(PageType.Init);
                 TextLabel textLabel = (TextLabel)flowLayoutPanel1.Controls[1];
                 textLabel.Active();
             }
@@ -57,7 +57,7 @@ namespace MVP_Pro_Practice.Components.Pagy
 
         private void Labelback_Click(object sender, EventArgs e)
         {
-            GeneratePages(_paginationPresenter.GeneratePageNumbers(PageType.Previous));
+            _paginationPresenter.GeneratePageNumbers(PageType.Previous);
             TextLabel textLabel = (TextLabel)flowLayoutPanel1.Controls[_paginationPresenter.ChangePage(PageType.Previous)];
             textLabel.Active();
             //ChangePage.Invoke(this, _paginationPresenter.currentPage);
@@ -66,7 +66,7 @@ namespace MVP_Pro_Practice.Components.Pagy
 
         private void Labelfront_Click(object sender, EventArgs e)
         {
-            GeneratePages(_paginationPresenter.GeneratePageNumbers(PageType.Next));
+            _paginationPresenter.GeneratePageNumbers(PageType.Next);
             TextLabel textLabel = (TextLabel)flowLayoutPanel1.Controls[_paginationPresenter.ChangePage(PageType.Next)];
             textLabel.Active();
             //ChangePage.Invoke(this, _paginationPresenter.currentPage);
@@ -93,7 +93,7 @@ namespace MVP_Pro_Practice.Components.Pagy
 
         private void LabelNextTurn_Click(object sender, EventArgs e)
         {
-            GeneratePages(_paginationPresenter.GeneratePageNumbers(PageType.NextTurn));
+            _paginationPresenter.GeneratePageNumbers(PageType.NextTurn);
             TextLabel textLabel = (TextLabel)flowLayoutPanel1.Controls[_paginationPresenter.ChangePage(PageType.NextTurn)];
             textLabel.Active();
 
@@ -102,7 +102,7 @@ namespace MVP_Pro_Practice.Components.Pagy
 
         private void LabelLastTurn_Click(object sender, EventArgs e)
         {
-            GeneratePages(_paginationPresenter.GeneratePageNumbers(PageType.PrevTurn));
+            _paginationPresenter.GeneratePageNumbers(PageType.PrevTurn);
             TextLabel textLabel = (TextLabel)flowLayoutPanel1.Controls[_paginationPresenter.ChangePage(PageType.PrevTurn)];
             textLabel.Active();
 
@@ -115,14 +115,6 @@ namespace MVP_Pro_Practice.Components.Pagy
             {
                 item.Normal();
             }
-        }
-
-        public void PaginationResponse(int totalPageNum)
-        {
-            _paginationPresenter.TotalPageNum = totalPageNum;
-            GeneratePages(_paginationPresenter.GeneratePageNumbers(PageType.Init));
-            TextLabel textLabel = (TextLabel)flowLayoutPanel1.Controls[1];
-            textLabel.Active();
         }
     }
 }

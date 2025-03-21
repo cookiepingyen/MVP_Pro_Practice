@@ -9,7 +9,6 @@ namespace MVP_Pro_Practice.Contracts
 {
     interface IPaginationView
     {
-        void PaginationResponse(int totalPageNum);
         int Total { get; set; }
         void GeneratePages(List<int> pageNumbers);
     }
@@ -20,7 +19,7 @@ namespace MVP_Pro_Practice.Contracts
         int TotalPageNum { get; set; }
 
         int ChangePage(PageType previous);
-        List<int> GeneratePageNumbers(PageType init);
+        void GeneratePageNumbers(PageType init);
         void InitPageCount(int total);
         void JumpPage(int v);
     }

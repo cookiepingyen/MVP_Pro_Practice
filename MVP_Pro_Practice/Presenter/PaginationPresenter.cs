@@ -43,7 +43,7 @@ namespace MVP_Pro_Practice.Presenter
         }
 
         // type => init next prev
-        public List<int> GeneratePageNumbers(PageType type)
+        public void GeneratePageNumbers(PageType type)
         {
             int initNum = 1;
             int endNum = 10;
@@ -86,7 +86,7 @@ namespace MVP_Pro_Practice.Presenter
                     break;
             }
             List<int> pageList = GenerateList(initNum, endNum);
-            return pageList;
+            paginationView.GeneratePages(pageList);
         }
 
         public void JumpPage(int page)
@@ -112,26 +112,6 @@ namespace MVP_Pro_Practice.Presenter
                     _currentPage = _currentPage - 10 > 0 ? _currentPage - 10 : 1;
                     return (_currentPage % 10 == 0) ? 10 : _currentPage % 10;
                 default: return _currentPage;
-            }
-        }
-
-        public bool TurnCheck(PageType type, out int page)
-        {
-            page = _currentPage;
-            switch (type)
-            {
-                case PageType.Next:
-                    // false => 不能下一頁(page + 1 > maxPage)
-                    return !(page + 1 > maxPage);
-                case PageType.Previous:
-                    return !(page - 1 < 1);
-                case PageType.NextTurn:
-                    // 是否可以+10
-                    return !(page + 10 > maxPage);
-                case PageType.PrevTurn:
-                    // 是否可以-10
-                    return !(page - 10 < 1);
-                default: return false;
             }
         }
 
